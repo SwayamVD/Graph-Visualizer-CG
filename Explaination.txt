@@ -1,0 +1,61 @@
+Code Explanation
+
+    Calculating the Bar Height:
+
+    cpp
+
+int barHeight = (values[i] * 300) / maxValue;
+
+    values[i]: This is the value of the bar at index i from the values array. For example, if values[0] is 50, this means the height of the first bar should represent 50.
+    300: This is a constant that represents the maximum height of the bars in pixels. You can think of it as the height of the drawing area for the bars.
+    maxValue: This is the maximum possible value that any bar can represent (in your case, it's 100). This means that the tallest bar will reach the full height of 300 pixels when the value is at its maximum (i.e., 100).
+    Calculation: The line calculates the height of the current bar by taking the value of the bar, multiplying it by 300, and then dividing by maxValue. This scales the height of the bar based on the user's input:
+        If values[i] is 50, then:
+            barHeight = (50 * 300) / 100 = 150 pixels.
+        If values[i] is 100, then:
+            barHeight = (100 * 300) / 100 = 300 pixels.
+
+So, this line essentially converts the input value into a height for the bar that fits within the defined drawing area.
+
+Calculating the X Position of the Bar:
+
+cpp
+
+int x1 = x + (i * (barWidth + gap));
+
+    x: This is the starting x-coordinate where the first bar will be drawn. In the code, it’s set to 100.
+    barWidth: This is the width of each bar (e.g., 50 pixels).
+    gap: This is the space between each bar (e.g., 20 pixels).
+    Calculation: This line calculates the x-coordinate for the current bar based on its index i:
+        For the first bar (i = 0):
+            x1 = 100 + (0 * (50 + 20)) = 100.
+        For the second bar (i = 1):
+            x1 = 100 + (1 * (50 + 20)) = 170.
+        For the third bar (i = 2):
+            x1 = 100 + (2 * (50 + 20)) = 240.
+
+This means each bar is positioned further to the right based on its index, accounting for both the width of the bar and the gap between bars.
+
+Calculating the Y Position of the Bar:
+
+cpp
+
+    int y1 = yBase - barHeight;
+
+        yBase: This is the base y-coordinate for the graph (e.g., 400), which is where the bottom of the bars will be drawn.
+        barHeight: This is the height of the bar calculated in the first line.
+        Calculation: This line calculates the top y-coordinate of the bar:
+            If barHeight is 150, then:
+                y1 = 400 - 150 = 250.
+            This means that the top of the bar will be drawn at y = 250 pixels.
+
+    Since the graphics coordinate system has its origin (0,0) at the top-left corner of the window, the higher the value of y1, the higher the bar will be drawn on the screen.
+
+Summary
+
+    The three lines together compute the position and height of each bar in the graph based on user-defined values:
+        The height of each bar is scaled based on the user's input and the maximum value.
+        The x position is calculated so that bars are drawn next to each other with a defined width and gap.
+        The y position is adjusted to ensure bars are drawn starting from the baseline up to their calculated heights.
+
+This approach allows for a visually accurate representation of the data in the bar graph! Let me know if you have any more questions or need further clarification!
